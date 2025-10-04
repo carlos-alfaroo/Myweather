@@ -6,21 +6,21 @@ db = SQLAlchemy()
 csrf = CSRFProtect()
 
 def create_app():
-    from flask import Flask
-    from .models import db
-
     print("Configurando app...")
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'clave-secreta'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///clima.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+    # Inicialización de extensiones
     db.init_app(app)
+    csrf.init_app(app)
+
     print("Base de datos inicializada")
 
-    # Temporal: comentar db.create_all() aquí
-    # with app.app_context():
-    #     db.create_all()
-    #     print("Tablas creadas")
+    # Registro de rutas (blueprint)
+    from .routes import main
+    app.register_blueprint(main)
 
-    from . import routes
+    # Retornar la aplicación Flask (clave del error)
+    return app

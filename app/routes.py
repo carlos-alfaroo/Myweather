@@ -35,4 +35,13 @@ def consultar():
 def resultado(consulta_id):
     consulta = Consulta.query.get_or_404(consulta_id)
     pronosticos = Pronostico.query.filter_by(consulta_id=consulta_id).all()
-    return render_template('resultado.html', consulta=consulta, pronost
+    return render_template('resultado.html', consulta=consulta, pronosticos=pronosticos)
+  
+# Endpoint para recibir lat/lon del mapa
+@main.route('/get_location', methods=['POST'])
+def get_location():
+    data = request.get_json()
+    lat = data.get('lat')
+    lon = data.get('lon')
+    print(f"Ubicación recibida: {lat}, {lon}")
+    return jsonify({'status': 'success', 'lat': lat, 'lon': lon})

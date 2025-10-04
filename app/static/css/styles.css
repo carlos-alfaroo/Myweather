@@ -134,4 +134,9 @@ input:focus, textarea:focus {
 .badge-red { background:#fff1f2; color:#9f1239; }
 
 /* Footer small */
-.small { f
+.small { font-size: 13px; color: #64748b;}
+
+@media (max-width:520px) {
+  .container { padding: 16px; margin: 18px auto;}
+  .brand .logo {width: 40px; height: 40px; font-size: 16px;}
+}

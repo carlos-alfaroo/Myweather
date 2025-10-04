@@ -15,4 +15,63 @@
 <body>
   <div class="container">
     <div class="card header">
-      <div 
+      <div class="brand">
+        <div class="logo">CP</div>
+        <div>
+          <div class="h1">RadarPeda</div>
+          <div class="subtitle">Consulta clima por fecha y lugar</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <form method="POST" action="{{ url_for('main.consultar') }}">
+        {{ form.hidden_tag() }}
+        <div class="form-row">
+          <div class="form-field">
+            <label>Fecha objetivo</label>
+            {{ form.fecha_objetivo(class_="") }}
+          </div>
+        </div>
+
+        <!-- Mapa interactivo -->
+        <div id="map"></div>
+
+        <div class="form-row" style="margin-top:14px;">
+          <div class="form-field">
+            <label>Latitud</label>
+            {{ form.lat(id="lat") }}
+          </div>
+          <div class="form-field">
+            <label>Longitud</label>
+            {{ form.lon(id="lon") }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field" style="flex:1 1 100%;">
+            <label>Actividad (opcional)</label>
+            {{ form.actividad() }}
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          {{ form.submit(class_="btn btn-primary") }}
+        </div>
+      </form>
+    </div>
+
+    <p class="small" style="margin-top:10px;">
+      Consejo: mueve el marcador o haz clic en el mapa para seleccionar coordenadas.
+    </p>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-o9N1jUToQELCjTzsjpGhYI6G8LQxVZbnM2F2FdxypoM="
+          crossorigin=""></script>
+
+  <!-- JS local -->
+  <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+</body>
+</html>

@@ -31,5 +31,28 @@ document.addEventListener('DOMContentLoaded', function() {
         attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    // Marcador inicial
-    let marker = L.marker([initialLat, initialLon], {draggable: true}).ad
+// Marcador inicial
+    let marker = L.marker([initialLat, initialLon], {draggable: true}).addTo(map);
+
+    // Actualizar inputs
+    function updateInputs(lat, lon) {
+        if (latInput) latInput.value = lat.toFixed(6);
+        if (lonInput) lonInput.value = lon.toFixed(6);
+    }
+
+    // Evento: click en el mapa
+    map.on('click', function(e) {
+        const { lat, lng } = e.latlng;
+        marker.setLatLng([lat, lng]);
+        updateInputs(lat, lng);
+    });
+
+    // Evento: arrastrar marcador
+    marker.on('dragend', function(e) {
+        const pos = marker.getLatLng();
+        updateInputs(pos.lat, pos.lng);
+    });
+
+    // Inicializa valores
+    updateInputs(initialLat, initialLon);
+});

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Credits - MyWeather{% endblock %}
+
+{% block content %}
+<body class="bg-slate-900 text-white min-h-screen flex items-center justify-center">
+  <div class="max-w-md w-full space-y-6 p-6">
+    
+    <h1 class="text-xl font-bold">CREDITS</h1>
+    <ul class="list-disc ml-6 text-slate-300">
+      <li>NASA Earth Science Division</li>
+      <li>Development Team</li>
+      <li>Design Team</li>
+    </ul>
+
+    <a href="{{ url_for('main.forecast') }}" class="text-orange-400 underline">← Back</a>
+  </div>
+</body>
+{% endblock %}

@@ -1,24 +1,16 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Consulta Climática</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% extends "base.html" %}
 
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-sA+vx6kG4P2btk5js7u6Ff0tWvHb5HVTv0CqfUQ+G+M="
-        crossorigin=""/>
+{% block title %}Home - MyWeather{% endblock %}
 
-</head>
-<body>
+
+{% block content %}
+
   <div class="container">
     <div class="card header">
       <div class="brand">
         <div class="logo">CP</div>
         <div>
-          <div class="h1">RadarPeda</div>
+          <div class="h1">Myweather</div>
           <div class="subtitle">Consulta clima por fecha y lugar</div>
         </div>
       </div>
@@ -66,12 +58,10 @@
     </p>
   </div>
 
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-          integrity="sha256-o9N1jUToQELCjTzsjpGhYI6G8LQxVZbnM2F2FdxypoM="
-          crossorigin=""></script>
+  <!-- Leaflet JS sin integridad -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <!-- JS local -->
   <script src="{{ url_for('static', filename='js/map.js') }}"></script>
-</body>
-</html>
+
+{% endblock %}

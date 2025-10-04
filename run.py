@@ -1,5 +1,5 @@
 from app import create_app, db
-
+from app.models import Usuario, Consulta, Pronostico, FuenteClima, PeticionAPI, Recomendacion, ErrorLog 
 print("Inicializando app...")  # <-- prueba
 app = create_app()
 

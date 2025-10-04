@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify
 from app import db
-from app.models import Usuario, Consulta, Pronostico
+from app.models import Usuario, Consulta, Pronostico, FuenteClima, PeticionAPI, Recomendacion, ErrorLog 
 from app.forms import ConsultaForm
 from datetime import datetime
 
@@ -45,3 +45,28 @@ def get_location():
     lon = data.get('lon')
     print(f"Ubicación recibida: {lat}, {lon}")
     return jsonify({'status': 'success', 'lat': lat, 'lon': lon})
+
+
+
+@main.route('/forecast')
+def forecast():
+    # Datos de ejemplo para mostrar
+    data = {
+        "location": "Blue Ridge, GA 30513",
+        "date": "July 22, 2023",
+        "risks": [
+            {"label": "Very Hot", "value": 52, "desc": "Potentially hot, but not extreme."},
+            {"label": "Very Cold", "value": 5, "desc": "Little to no chance of cold weather."},
+            {"label": "Very Wet", "value": 82, "desc": "High chance of rain. You may want to bring an umbrella."},
+            {"label": "Very Uncomfortable", "value": 4, "desc": "Mild discomfort possible."}
+        ]
+    }
+    return render_template('forecast.html', data=data)
+
+@main.route('/datasources')
+def datasources():
+    return render_template('datasources.html')
+
+@main.route('/credits')
+def credits():
+    return render_template('credits.html')

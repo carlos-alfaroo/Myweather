@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Resultado</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <a href="{{ url_for('main.index') }}" class="btn btn-ghost">← nueva consulta</a>
+
+    <div class="card" style="margin-top:12px;">
+      <div class="h1">Resultado: {{ consulta.fecha_objetivo }}</div>
+      <p class="subtitle">Actividad: {{ consulta.actividad_opcional or '—' }}</p>
+    </div>
+
+    <div class="results">
+      {% for p in pronosticos %}
+      <div class="result-item">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <strong>{{ p.hora_inicio.strftime('%H:%M') if p.hora_inicio else '—' }} — {{ p.hora_fin.strftime('%H:%M') if p.hora_fin else '—' }}</strong>
+          {% if p.p_lluvia_intensa and p.p_lluvia_intensa > 0.7 %}
+            <span class="badge badge-red">Alerta lluvia</span>
+          {% endif %}
+        </div>
+        <p class="small">Prob lluvia intensa: {{ (p.p_lluvia_intensa or 0)*100 | round(0) }}%</p>
+        <p class="small">Prob viento fuerte: {{ (p.p_viento_fuerte or 0)*100 | round(0) }}%</p>
+      </div>
+      {% else %}
+      <div class="card">Aún no hay pronósticos disponibles.</div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</h

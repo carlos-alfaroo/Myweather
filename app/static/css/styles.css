@@ -1,0 +1,137 @@
+/* styles.css - minimal, modern, responsive */
+
+/* Reset minimal */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; font-family: Inter, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; background:#f6f8fb; color:#0f1724; }
+
+/* Layout */
+.container {
+  max-width: 960px;
+  margin: 36px auto;
+  padding: 24px;
+}
+
+/* Card */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(15,23,36,0.06);
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+/* Header */
+.header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom: 14px;
+}
+.brand {
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.brand .logo {
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  background: linear-gradient(135deg,#0ea5a4,#0369a1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-weight:700;
+  font-size:18px;
+}
+
+/* Title */
+.h1 {
+  font-size:20px;
+  font-weight:700;
+  color:#071034;
+}
+.subtitle {
+  font-size:13px;
+  color:#475569;
+}
+
+/* Form styles */
+.form-row { margin-bottom:12px; display:flex; gap:12px; flex-wrap:wrap; }
+.form-field {
+  flex:1 1 220px;
+}
+label { display:block; font-size:13px; color:#334155; margin-bottom:6px; }
+input[type="text"], input[type="date"], input[type="number"], textarea {
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid #e6eef6;
+  background:#fbfdff;
+  font-size:14px;
+  outline:none;
+  transition:box-shadow .12s, border-color .12s;
+}
+input:focus, textarea:focus {
+  border-color:#7dd3fc;
+  box-shadow:0 6px 18px rgba(125,211,252,0.12);
+}
+
+/* Map container */
+#map {
+  width: 100%;
+  height: 380px;              /* altura necesaria para que Leaflet dibuje */
+  border-radius: 14px;
+  border: 1px solid #e6eef6;
+  margin-top: 10px;
+}
+
+/* Buttons */
+.btn {
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+  border:none;
+}
+.btn-primary {
+  background: linear-gradient(90deg,#0ea5a4,#0369a1);
+  color:white;
+  box-shadow: 0 8px 18px rgba(3,105,161,0.12);
+}
+.btn-ghost {
+  background:transparent;
+  border:1px solid #e6eef6;
+  color:#0f1724;
+}
+
+/* Result list */
+.results {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:12px;
+  margin-top:10px;
+}
+.result-item {
+  padding:14px;
+  border-radius:10px;
+  background:linear-gradient(180deg,#ffffff,#fbfdff);
+  border:1px solid #eef2ff;
+}
+
+/* Badges */
+.badge {
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+}
+.badge-green { background:#ecfdf5; color:#065f46; }
+.badge-yellow { background:#fffbeb; color:#92400e; }
+.badge-red { background:#fff1f2; color:#9f1239; }
+
+/* Footer small */
+.small { f
